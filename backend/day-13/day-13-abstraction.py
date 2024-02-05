@@ -6,7 +6,7 @@ class Calculator:
 
         return _sum
 
-numlist = [5, 10, 15, 20, 25]
+numlist = [10, 20, 30, 40, 50]
 new_calculator = Calculator()
 sum = new_calculator.sum(numlist)
 print(sum)
