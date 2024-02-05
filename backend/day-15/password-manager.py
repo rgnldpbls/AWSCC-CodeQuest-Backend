@@ -41,7 +41,9 @@ def is_existing(website):
     with open('data.json', 'r') as f:
         data = json.load(f)
         if website in data:
+            f.close()
             return True
+        f.close()
         return False
 
 def add():
@@ -58,7 +60,7 @@ def add():
 
     with open('data.json', 'r') as f:
         data = json.load(f)
-    
+    f.close()
     if website in data:
         data[website].append({'email': email, 'password': password})
     else:
@@ -66,7 +68,7 @@ def add():
 
     with open('data.json', 'w') as f:
         json.dump(data, f, indent=4)
-
+    f.close()
     os.system('cls')
     print("Successfully added!")
     
@@ -79,6 +81,7 @@ def view():
             for i in range(len(val)):
                 print(f"    Email: {val[i]['email']}")
                 print(f"    Password: {val[i]['password']}\n")
+    f.close()
 
 def search(website):
     with open('data.json', 'r') as f:
@@ -89,9 +92,10 @@ def search(website):
                 for i in range(len(val)):
                     print(f"    {i+1} Email: {val[i]['email']}")
                     print(f"      Password: {val[i]['password']}\n")
-                return True
-            
+                f.close()
+                return True        
         print("No websites found.")
+        f.close()
         return 
     
 def delete(website):
@@ -108,10 +112,10 @@ def delete(website):
 
         if len(data[website]) == 0:
             data.pop(website)
-
+    f.close()
     with open('data.json', 'w') as f:
         json.dump(data, f, indent=4)
-
+    f.close()
     print("Successfully removed.")
 
 def update(website):
@@ -127,10 +131,10 @@ def update(website):
         to_update = input("'email' or 'password': ").lower()
         new_val = input(f"Enter your new {to_update}: ")
         data[website][num-1][to_update] = new_val
-
+    f.close()
     with open('data.json', 'w') as f:
         json.dump(data, f, indent=4)
-
+    f.close()
     print("Successfully updated!")
 
 running = True
