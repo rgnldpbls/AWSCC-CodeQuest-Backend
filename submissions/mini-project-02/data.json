@@ -1,0 +1,20 @@
+{
+    "yt": [
+        {
+            "email": "clarence",
+            "password": "432432432"
+        }
+    ],
+    "facebook": [
+        {
+            "email": "sample@gmail.com",
+            "password": "fb123"
+        }
+    ],
+    "google": [
+        {
+            "email": "example@gmail.com",
+            "password": "example123"
+        }
+    ]
+}
