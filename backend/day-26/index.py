@@ -16,8 +16,8 @@ class Books(db.Model):
     
 db.create_all()
 
-new_book = Book(title="To kill a Mockingbird", author="Harper Lee", published_year=1960)
+new_book = Books(title="To kill a Mockingbird", author="Harper Lee", published_year=1960)
 db.session.add(new_book)
 db.session.commit()
 
-books = Book.query.all()
+books = Books.query.all()
