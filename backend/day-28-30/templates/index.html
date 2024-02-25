@@ -40,13 +40,34 @@
         />
         <br />
         <button class="btn btn-outline-primary">Add</button>
+        <a href="/export" class="btn btn-success"> Export </a>
       </form>
     </div>
     <hr />
     <div class="container">
-      {% for item in passList %} {{ item.web_url }} {{ item.email }} {{
-      item.password }} <br />{% endfor %}
+      {% for item in passList %} {{ item.web_url }} {{ item.email }}
+      <input type="password" value="{{item.password }}" id="{{item.id }}" />
+      <a href="/delete/{{item.id}}" class="btn btn-outline-danger"> Delete </a>
+      <a href="/update/{{item.id}}" class="btn btn-outline-success"> Update </a>
+      <button
+        onclick="myFunction('{{item.id}}')"
+        class="btn btn-outline-primary"
+      >
+        Show Password
+      </button>
+      <br />
+      {% endfor %}
     </div>
+    <script type="text/javascript">
+      function myFunction(pid) {
+        var x = document.getElementById(pid);
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
